@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body {
+				margin: 0;
+			}
+			div {
+				float: left;
+				width: 20px;
+				height: 20px;
+				background: greenyellow;
+				margin: 0 10px;
+				font: 20px/20px "宋体";
+				text-align: center;
+			}
+		</style>
+		<script src="js/aTween.js"></script>
+		<script>
+			function set() {
+				var divs = getTag(document,"div");
+				for(var i = 0; i < divs.length; i++) {
+					divs[i].style.top = divs[i].offsetTop + "px";
+					divs[i].style.left = divs[i].offsetLeft + "px";
+				}
+				for(var i = 0; i < divs.length; i++) {
+					divs[i].style.position = "absolute";
+					divs[i].style.margin = 0;
+					divs[i].innerHTML = i;
+				}
+			}
+			window.onload = function() {
+				set();
+				var divs = getTag(document,"div");
+				var center = parseInt(divs.length/2);
+				var timer = 0;
+				var nub = 0;
+				timer = setInterval(
+					function() {
+						if(nub < divs.length) {
+							out(divs[nub]);
+							nub++;
+						} else {
+							clearInterval(timer);
+						}
+					},100
+				);
+				function out(obj) {
+					mTween(obj,{top:300},500,"easeBoth",function() {
+						back(obj);
+					})
+				}
+				function back(obj) {
+					mTween(obj,{top:0},500,"easeBoth",function() {
+						out(obj);
+					})
+				}
+			};
+		</script>
+	</head>
+	<body>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+	</body>
+</html>
